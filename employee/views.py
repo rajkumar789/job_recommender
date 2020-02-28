@@ -65,9 +65,12 @@ def EmployeAdd(request):
 					data["added"] = True
 
 	if "id" in request.GET:
-		data["employee"] = Employee.objects.get(
-				id=request.GET["id"]
-				)
+		try:
+			data["employee"] = Employee.objects.get(
+					id=request.GET["id"]
+					)
+		except:
+			pass
 	return render(request, "employee-add.html", data)
 
 
