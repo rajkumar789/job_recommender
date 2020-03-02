@@ -6,7 +6,7 @@ from employee.views import HomePage, EmployeeList, \
 EmployeAdd, EmployeDelete
 from employer.views import EmployerList
 
-from users.views import Register
+from users.views import Register, Login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -16,7 +16,8 @@ urlpatterns = [
     path('employee-add', EmployeAdd),
     path('employee-delete', EmployeDelete),
 
-    path('register', Register),
+    path('register/', Register),
+    path('login/', Login),
 
 
 ]
