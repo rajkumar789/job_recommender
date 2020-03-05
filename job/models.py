@@ -25,7 +25,13 @@ class JobRating(models.Model):
     job  = models.ForeignKey(Job,on_delete=models.CASCADE)
     rating = models.IntegerField()
     
+    def __str__(self):
+        return f'User - {self.user.username} && Job - {self.job.title} && Rating- {self.rating}'
+    
 class JobReview(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     job  = models.ForeignKey(Job,on_delete=models.CASCADE)
     review = models.TextField()
+    
+    def __str__(self):
+        return f'User - {self.user.username} && Job - {self.job.title}'
