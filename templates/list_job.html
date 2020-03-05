@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a class="btn btn-info" href="/add_job">Job Add</a>
+
+<h3>Job List </h3>
+
+<div class="container">
+	<div class="row">
+
+		{% for job in jobs %}
+		<div class="col-md-4">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<strong>Title:</strong> {{job.title}}
+				</div>
+				<div class="panel-body">
+					<strong>Category: </strong>{{job.category}}<br>
+					<strong>Salary : </strong>{{job.salary}}<br>
+					<strong>Location : </strong>{{job.location}}<br>
+					<strong>Deadline : </strong>{{job.deadline}}<br>
+
+				</div>
+
+				<div class="panel-footer">
+					<a href="job_detail/{{job.id}}">Detail</a>
+				</div>
+			</div>
+
+		</div>
+		{% endfor %}
+
+		{% if jobs.has_other_pages %}
+		<ul class="pagination">
+			{% if jobs.has_previous %}
+			<li><a href="?page={{ jobs.previous_page_number }}">&laquo;</a></li>
+			{% else %}
+			<li class="disabled"><span>&laquo;</span></li>
+			{% endif %}
+			{% for i in jobs.paginator.page_range %}
+			{% if jobs.number == i %}
+			<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+			{% else %}
+			<li><a href="?page={{ i }}">{{ i }}</a></li>
+			{% endif %}
+			{% endfor %}
+			{% if users.has_next %}
+			<li><a href="?page={{ jobs.next_page_number }}">&raquo;</a></li>
+			{% else %}
+			<li class="disabled"><span>&raquo;</span></li>
+			{% endif %}
+		</ul>
+		{% endif %}
+
+
+
+	</div>
+</div>
+{% endblock %}

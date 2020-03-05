@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'users',
     'employee',
     'employer',
+    'job',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,5 @@ STATIC_URL = '/static/'
 
 
 AUTH_USER_MODEL = "users.user"
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

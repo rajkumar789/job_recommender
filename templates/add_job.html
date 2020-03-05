@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+  
+  {% if added %}
+  <p style="color:red;">Employee Added Successfully</p>
+  {% endif %}
+
+  <p style="color:red;">{{ message }}</p>
+
+ <form  method="POST">
+
+    <div class="col-md-3">
+      {{form.title | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.description | as_crispy_field }}
+    </div>
+
+    <div class="col-md-3">
+      {{form.category | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.location | as_crispy_field }}
+    </div>
+
+    <div class="col-md-3">
+      {{form.qualification | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.experience_year | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.salary | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.job_type | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.deadline | as_crispy_field }}
+    </div>
+    <div class="col-md-3">
+      {{form.skills | as_crispy_field }}
+    </div>
+<div class="col-md-12">
+  <button type="submit" class="btn btn-primary">Submit</button>
+    
+</div>
+  </form>
+
+{% endblock %}

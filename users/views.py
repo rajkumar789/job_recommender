@@ -44,3 +44,7 @@ def Register(request):
             data["message"] = "User created successfully"
 
     return render(request, "register.html", data)
+
+def LogoutUser(request):
+    logout(request)
+    return redirect('/')

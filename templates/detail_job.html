@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <strong>Title:</strong> {{job.title}}
+      </div>
+      <div class="panel-body">
+        <strong>Category: </strong>{{job.category}}<br>
+        <strong>Salary : </strong>{{job.salary}}<br>
+        <strong>Location : </strong>{{job.location}}<br>
+        <strong>Deadline : </strong>{{job.deadline}}<br>
+      </div>
+  
+  
+    </div>
+  
+  </div>
+</div>
+
+
+	<div class="row" >
+		<div class="col-md-6">
+    	<div class="well well-sm">
+            <div class="text-right">
+                <a class="btn btn-success btn-green" href="#reviews-anchor" id="open-review-box">Leave a Review</a>
+            </div>
+        
+            <div class="row" id="post-review-box" style="display:none;">
+                <div class="col-md-12">
+                    <form accept-charset="UTF-8" method="post" action="/review_movie/{{job.id}}">
+                      {% csrf_token %}
+                        <input id="ratings-hidden" name="rating" type="hidden"> 
+                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+        
+                        <div class="text-right">
+                            <div class="stars starrr" data-rating="0"></div>
+                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                            <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+                            <button class="btn btn-success btn-lg" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div> 
+         
+		</div>
+	</div>
+
+
+{% endblock %}
